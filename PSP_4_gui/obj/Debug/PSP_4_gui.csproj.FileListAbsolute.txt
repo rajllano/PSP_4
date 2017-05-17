@@ -1,0 +1,6 @@
+C:\Users\Max\Source\Repos\PSP_4\PSP_4_gui\bin\Debug\PSP_4_gui.exe.config
+C:\Users\Max\Source\Repos\PSP_4\PSP_4_gui\bin\Debug\PSP_4_gui.exe
+C:\Users\Max\Source\Repos\PSP_4\PSP_4_gui\bin\Debug\PSP_4_gui.pdb
+C:\Users\Max\Source\Repos\PSP_4\PSP_4_gui\obj\Debug\PSP_4_gui.csprojResolveAssemblyReference.cache
+C:\Users\Max\Source\Repos\PSP_4\PSP_4_gui\obj\Debug\PSP_4_gui.exe
+C:\Users\Max\Source\Repos\PSP_4\PSP_4_gui\obj\Debug\PSP_4_gui.pdb
