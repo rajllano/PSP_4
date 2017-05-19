@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PSP_4_control;
 
 namespace PSP_4_gui
 {
@@ -10,6 +11,8 @@ namespace PSP_4_gui
     {
         static void Main(string[] args)
         {
+            ControlArchivo.ProcesarArchivo(@"C:\PSP4\Datos.txt");
+            Console.ReadKey();
         }
     }
 }

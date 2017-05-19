@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Singleton para garantizar la unicidad de este objeto que a su vez es el unico punto de entrada al modelo de la aplicación. Cuenta con su constructor para crear la instancia de la colección al crear el objeto y el destructor para eliminar la referencia invocando directamente al recolector de basura">
+    <Position X="3.063" Y="0.5" Height="2.354" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Clase que abstrae el uso de la colección List usando generics">
+    <Position X="8.32" Y="1.25" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Clase que hereda la funcionalidad de la colección para guardar los datos del procesamiento">
+    <Position X="7.167" Y="5.042" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Iterador para la colección">
+    <Position X="0.5" Y="6.281" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="PSP_4_modelo.Aplicacion">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Aplicacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PSP_4_modelo.Coleccion&lt;T&gt;">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Coleccion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PSP_4_modelo.Dato">
+    <Position X="5.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAQAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Dato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PSP_4_modelo.IteradorColeccionDato">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAEAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>IteracionColeccionDato.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PSP_4_modelo.ColeccionDato">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ColeccionDato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="PSP_4_modelo.Iterador">
+    <Position X="2.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Iterador.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
