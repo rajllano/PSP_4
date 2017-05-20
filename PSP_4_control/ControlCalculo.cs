@@ -31,48 +31,50 @@ namespace PSP_4_control
 
                 for (int x = 0; x <= 10; x++)
                 {
-                    /// 0. i
-                    VectorCalculos[0] = x;
-                    /// 1. Xi
-                    VectorCalculos[1] = x * W;
-                    /// 2. 1 + (Xi^2/Dof)
-                    VectorCalculos[2] = 1 + (Math.Pow(VectorCalculos[1], 2) / d.dof);
-                    /// 3. 1 + (Xi^2/Dof)
-                    VectorCalculos[3] = Math.Pow(VectorCalculos[2], t1);
-                    /// 4. T((dof+1)/2) / (((dof*PI)^1/2) * T(dof/2)))
-                    VectorCalculos[4] = t1 / (Constante * t2);
-                    /// 5. -(dof+1)/2
-                    VectorCalculos[5] = -((d.dof + 1) / 2);
-                    /// 6. -(dof+1)/2
-                    VectorCalculos[6] = (1 + (Math.Pow(VectorCalculos[1], 2) / d.dof));
-                    /// 7. T((dof+1)/2) / (((dof*PI)^1/2)  T(dof/2)))  (1 + (Xi^2/Dof))^-(dof+1)/2
-                    VectorCalculos[7] = VectorCalculos[4] * Math.Pow(VectorCalculos[6], VectorCalculos[5]);
-                    /// 8. Multiplicador
-                    switch (x)
+                    for(int y=0;y<=9;y++)
                     {
-                        case 0:
-                        case 10:
-                            VectorCalculos[8] = 1;
-                            break;
-                        case 1:
-                        case 3:
-                        case 5:
-                        case 7:
-                        case 9:
-                            VectorCalculos[8] = 4;
-                            break;
-                        case 2:
-                        case 4:
-                        case 6:
-                        case 8:
-                            VectorCalculos[8] = 2;
-                            break;
+                        switch(y)
+                        {
+                            case 0:
+                                VectorCalculos[0] = x;
+                                break;
+                            case 1:
+                                VectorCalculos[1] = x * W;
+                                break;
+                            case 2:
+                                VectorCalculos[2] = 1 + (Math.Pow(VectorCalculos[1], 2) / d.dof);
+                                break;
+                            case 3:
+                                VectorCalculos[3] = Math.Pow(VectorCalculos[2], t1);
+                                break;
+                            case 4:
+                                VectorCalculos[4] = t1 / (Constante * t2);
+                                break;
+                            case 5:
+                                VectorCalculos[5] = -((d.dof + 1) / 2);
+                                break;
+                            case 6:
+                                VectorCalculos[6] = (1 + (Math.Pow(VectorCalculos[1], 2) / d.dof));
+                                break;
+                            case 7:
+                                VectorCalculos[7] = VectorCalculos[4] * Math.Pow(VectorCalculos[6], VectorCalculos[5]);
+                                break;
+                            case 8:
+
+                                if (x == 0 || x == 10)
+                                    VectorCalculos[8] = 1;
+                                else if(x == 1 || x == 3 || x == 5 || x == 7 || x == 9)
+                                    VectorCalculos[8] = 4;
+                                else if(x == 2 || x == 4 || x==6 || x==8)
+                                    VectorCalculos[8] = 2;
+                                
+                                break;
+                            case 9:
+                                VectorCalculos[9] = (W / 3) * VectorCalculos[8] * VectorCalculos[7];
+                                CalculoTotal += VectorCalculos[9];
+                                break;
+                        }
                     }
-
-                    /// 9. Terms
-                    VectorCalculos[9] = (W / 3) * VectorCalculos[8] * VectorCalculos[7];
-
-                    CalculoTotal += VectorCalculos[9];
                 }
 
                 Respuesta = String.Format("x1 = {0} - x2 = {1} - dof = {2} - p = {3}", d.x1, d.x2, d.dof, Math.Round(CalculoTotal, 5));

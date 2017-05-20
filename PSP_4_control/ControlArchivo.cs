@@ -16,63 +16,70 @@ namespace PSP_4_control
         /// <param name="Archivo">Archivo a procesar</param>
         public static void ProcesarArchivo(String RutaArchivo)
         {
-            if (!File.Exists(RutaArchivo))
-                throw new Exception("Archivo no existe");
-
-            FileInfo Archivo = new FileInfo(RutaArchivo);
-
-            StreamReader ArchivoTexto = new StreamReader(Archivo.FullName);
-            string Linea;
-            String[] Arreglo;
-            Double x1, x2, dof;
-            int ContadorLinea = 0;
-            Dato d;
-
-            while ((Linea = ArchivoTexto.ReadLine()) != null)
+            try
             {
-                if (Linea.Trim().Length > 0)
+                if (!File.Exists(RutaArchivo))
+                    throw new Exception("Archivo no existe");
+
+                FileInfo Archivo = new FileInfo(RutaArchivo);
+
+                StreamReader ArchivoTexto = new StreamReader(Archivo.FullName);
+                string Linea;
+                String[] Arreglo;
+                Double x1, x2, dof;
+                int ContadorLinea = 0;
+                Dato d;
+
+                while ((Linea = ArchivoTexto.ReadLine()) != null)
                 {
-                    Arreglo = Linea.Split(';');
-                    ContadorLinea++;
-
-                    if (Arreglo.Length != 3)
-                        throw new Exception("La estructura del archivo no es correcta");
-
-                    try
+                    if (Linea.Trim().Length > 0)
                     {
-                        x1 = Convert.ToDouble(Arreglo[0]);
-                    }
-                    catch
-                    {
-                        throw new Exception("Archivo [" + Archivo.Name + "] Linea [" + ContadorLinea + "] En valor de x1 no es numerico");
-                    }
+                        Arreglo = Linea.Split(';');
+                        ContadorLinea++;
 
-                    try
-                    {
-                        x2 = Convert.ToDouble(Arreglo[1]);
-                    }
-                    catch
-                    {
-                        throw new Exception("Archivo [" + Archivo.Name + "] Linea [" + ContadorLinea + "] En valor de x2 no es numerico");
-                    }
+                        if (Arreglo.Length != 3)
+                            throw new Exception("La estructura del archivo no es correcta");
 
-                    try
-                    {
-                        dof = Convert.ToDouble(Arreglo[2]);
-                    }
-                    catch
-                    {
-                        throw new Exception("Archivo [" + Archivo.Name + "] Linea [" + ContadorLinea + "] En valor de dof no es numerico");
-                    }
+                        try
+                        {
+                            x1 = Convert.ToDouble(Arreglo[0]);
+                        }
+                        catch
+                        {
+                            throw new Exception("Archivo [" + Archivo.Name + "] Linea [" + ContadorLinea + "] En valor de x1 no es numerico");
+                        }
 
-                    d = new Dato(x1, x2, dof);
+                        try
+                        {
+                            x2 = Convert.ToDouble(Arreglo[1]);
+                        }
+                        catch
+                        {
+                            throw new Exception("Archivo [" + Archivo.Name + "] Linea [" + ContadorLinea + "] En valor de x2 no es numerico");
+                        }
 
-                    Aplicacion.getInstancia().ColeccionDato.Agregar(d);
+                        try
+                        {
+                            dof = Convert.ToDouble(Arreglo[2]);
+                        }
+                        catch
+                        {
+                            throw new Exception("Archivo [" + Archivo.Name + "] Linea [" + ContadorLinea + "] En valor de dof no es numerico");
+                        }
+
+                        d = new Dato(x1, x2, dof);
+
+                        Aplicacion.getInstancia().ColeccionDato.Agregar(d);
+                    }
                 }
-            }
 
-            ArchivoTexto.Close();
-            ControlCalculo.ReglaSimpson();
+                ArchivoTexto.Close();
+                ControlCalculo.ReglaSimpson();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("ERROR: " + e.Message);
+            }
         }
     }
 }
